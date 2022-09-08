@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Meeting Scheduler</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style media="screen">
+  .checkbox-2{
+    margin-left: 40%;
+  }
+  .container{
+    padding-top: 5rem;
+  }
+  .heading{
+    margin-bottom:2rem;
+  }
+  .first{
+    color:red;
+  }
+  .second{
+    color:gray;
+  }
+</style>
+  </head>
+  <body>
+
+<script>
+
+    function tempertureConverter(){
+        let intervals =[
+        [document.getElementById("member1from").value,document.getElementById("member1to").value],
+        [document.getElementById("member2from").value,document.getElementById("member2to").value],
+        [document.getElementById("member3from").value,document.getElementById("member3to").value]
+        ];
+
+	let N = intervals.length;
+    		let l = intervals[0][0];
+    		let r = intervals[0][1];
+    		for (let i = 1; i < N; i++)
+    		{
+    			if (intervals[i][0] > r ||
+    				intervals[i][1] < l)
+    			{
+    				document.write(-1 + "</br>");
+    				return;
+    			}
+    			else
+    			{
+    				l = Math.max(l, intervals[i][0]);
+    				r = Math.min(r, intervals[i][1]);
+    			}
+    		}
+    		document.write("<title>Meeting Timing</title>"+"<center>"+"<h1>"+"[" + l +", " + r + "]"+ "</h1>" + "</br>" +"<h3>Meeting can be Scheduled from "+l+":00" + " TO " + r+":00</h3>"+"</center>");
+}
+
+</script>
+
+<div class="container">
+  <center><H1 class="heading"><span class="first">Meeting</span><span class ="second"> Scheduler</span></h1></center>
+  <form>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member1from"  class="form-control" />
+        <label class="form-label" for="form6Example1">Member 1: From</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member1to" class="form-control" />
+        <label class="form-label" for="form6Example2">Member 1: To</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member2from" value="" class="form-control" />
+        <label class="form-label" for="form6Example1">Member 2: From</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member2to" value="" class="form-control" />
+        <label class="form-label" for="form6Example2">Member 2: To</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member3from" value="" class="form-control" />
+        <label class="form-label" for="form6Example1">Member 3: From</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+        <input type="number" id="member3to" value="" class="form-control" />
+        <label class="form-label" for="form6Example2">Member 3: To</label>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" value="Submit" id = "submit"
+         onClick = "tempertureConverter()" class="btn btn-danger btn-block mb-4">Submit</button>
+</form>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
